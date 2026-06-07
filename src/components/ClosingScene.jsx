@@ -7,10 +7,10 @@ export default function ClosingScene({ config }) {
         <p className="eyebrow">{'Hasta pronto'}</p>
         <h2>{config.closingText}</h2>
         <p>
-          {'Gracias por acompanarnos en este comienzo. Nos hara feliz compartir este dia contigo.'}
+          {'Gracias por acompa\u00f1arnos en este comienzo. Nos har\u00e1 feliz compartir este d\u00eda contigo.'}
         </p>
         <div className="closing-signature">
-          {`Con carino, ${config.groomName} & ${config.brideName}`}
+          {`Con cari\u00f1o, ${config.groomName} & ${config.brideName}`}
         </div>
       </FadeIn>
     </section>

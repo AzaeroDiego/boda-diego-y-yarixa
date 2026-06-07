@@ -42,7 +42,7 @@ export default function RSVPForm({ config }) {
     <section className="section section-ivory">
       <div className="section-inner">
         <SectionTitle eyebrow="RSVP" title="Confirma tu asistencia">
-          {'Tu respuesta nos ayuda a preparar cada detalle con carino.'}
+          {'Tu respuesta nos ayuda a preparar cada detalle con cari\u00f1o.'}
         </SectionTitle>
         <FadeIn>
           <form className="rsvp-card" onSubmit={handleSubmit}>
@@ -51,22 +51,22 @@ export default function RSVPForm({ config }) {
               <input name="name" value={form.name} onChange={updateField} />
             </label>
             <label>
-              {'Telefono'}
+              {'Tel\u00e9fono'}
               <input name="phone" value={form.phone} onChange={updateField} />
             </label>
             <label>
-              {'Asistiras'}
+              {'Asistir\u00e1s'}
               <select
                 name="attendance"
                 value={form.attendance}
                 onChange={updateField}
               >
-                <option value="si">{'Si, asistire'}</option>
-                <option value="no">{'No podre asistir'}</option>
+                <option value="si">{'S\u00ed, asistir\u00e9'}</option>
+                <option value="no">{'No podr\u00e9 asistir'}</option>
               </select>
             </label>
             <label>
-              {'Numero de acompanantes'}
+              {'N\u00famero de acompa\u00f1antes'}
               <input
                 min="1"
                 name="passes"
@@ -92,7 +92,7 @@ export default function RSVPForm({ config }) {
         {confirmation && (
           <FadeIn className="mt-8">
             <p className="mb-5 text-center font-serif text-2xl italic text-ivory">
-              {'Gracias por confirmar. Te esperamos con mucho carino.'}
+            {'Gracias por confirmar. Te esperamos con mucho cari\u00f1o.'}
             </p>
             <DigitalTicket guest={confirmation} config={config} />
           </FadeIn>

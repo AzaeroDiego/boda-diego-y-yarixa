@@ -166,6 +166,194 @@ a {
   will-change: transform;
 }
 
+.hero-cinematic {
+  position: relative;
+  min-height: 100svh;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f6f0e1;
+  box-shadow: 0 0 120px rgba(0, 0, 0, 0.2);
+}
+
+.hero-cinematic .layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-layer-image {
+  position: absolute;
+  inset: -1%;
+  width: 102%;
+  height: 102%;
+  object-fit: cover;
+  user-select: none;
+  will-change: transform;
+}
+
+.hero-layer-base {
+  filter: saturate(1.02) contrast(1.01) brightness(0.99);
+}
+
+.hero-layer-far {
+  opacity: 0.44;
+  filter: blur(2.4px) brightness(1.02);
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 78%);
+  mask-image: linear-gradient(180deg, black 0 58%, transparent 100%);
+}
+
+.hero-layer-architecture {
+  opacity: 0.84;
+  filter: drop-shadow(0 16px 28px rgba(150, 131, 84, 0.22));
+  clip-path: polygon(26% 47%, 74% 47%, 78% 80%, 22% 80%);
+  mask-image: radial-gradient(ellipse at 50% 67%, black 0 38%, transparent 58%);
+}
+
+.hero-layer-front-left {
+  opacity: 0.98;
+  filter: blur(0.3px) drop-shadow(0 20px 28px rgba(95, 88, 55, 0.18));
+  clip-path: polygon(0 0, 39% 0, 34% 100%, 0 100%);
+  mask-image: linear-gradient(90deg, black 0 65%, transparent 92%);
+}
+
+.hero-layer-front-right {
+  opacity: 0.98;
+  filter: blur(0.3px) drop-shadow(0 20px 28px rgba(95, 88, 55, 0.18));
+  clip-path: polygon(61% 0, 100% 0, 100% 100%, 66% 100%);
+  mask-image: linear-gradient(270deg, black 0 65%, transparent 92%);
+}
+
+.hero-layer-front-bottom {
+  opacity: 0.96;
+  filter: blur(0.1px) drop-shadow(0 -12px 24px rgba(107, 96, 62, 0.2));
+  clip-path: polygon(0 74%, 100% 74%, 100% 100%, 0 100%);
+  mask-image: linear-gradient(0deg, black 0 84%, transparent 100%);
+}
+
+.hero-cinematic .layer-bg {
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.28), transparent 20%),
+    #f6f0e1;
+}
+
+.hero-cinematic .layer-fog {
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0.48;
+}
+
+.hero-cinematic .layer-fog::before,
+.hero-cinematic .layer-fog::after {
+  content: '';
+  position: absolute;
+  left: -32%;
+  width: 164%;
+  height: 15%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), rgba(200, 169, 107, 0.18), transparent);
+  filter: blur(24px);
+  animation: hero-fog-drift 34s ease-in-out infinite alternate;
+}
+
+.hero-cinematic .layer-fog::before {
+  top: 22%;
+}
+
+.hero-cinematic .layer-fog::after {
+  top: 67%;
+  opacity: 0.7;
+  animation-delay: -10s;
+  animation-duration: 42s;
+}
+
+.hero-cinematic .layer-far-trees {
+  z-index: 3;
+}
+
+.hero-cinematic .layer-architecture {
+  z-index: 4;
+}
+
+.hero-cinematic .layer-front-left,
+.hero-cinematic .layer-front-right,
+.hero-cinematic .layer-front-bottom {
+  z-index: 6;
+}
+
+.hero-cinematic .layer-frame {
+  z-index: 7;
+}
+
+.hero-cinematic .layer-frame::before,
+.hero-cinematic .layer-frame::after {
+  content: '';
+  position: absolute;
+  inset: 4.5svh 1.3rem 5svh;
+  border: 1px solid rgba(200, 169, 107, 0.34);
+  border-radius: 42px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.hero-cinematic .layer-frame::after {
+  inset: 5.8svh 2rem 6.2svh;
+  opacity: 0.4;
+  border-color: rgba(200, 169, 107, 0.18);
+}
+
+.hero-cinematic .layer-particles {
+  z-index: 8;
+}
+
+.hero-dust {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  opacity: 0;
+  background: rgba(200, 169, 107, 0.92);
+  box-shadow: 0 0 14px rgba(200, 169, 107, 0.5);
+  animation: hero-particle-float 9s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+
+.hero-content {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 1.2rem max(1.4rem, 4svh);
+}
+
+.hero-open-button {
+  min-height: 3.05rem;
+  padding: 0 1.3rem;
+  border: 1px solid rgba(168, 132, 66, 0.45);
+  border-radius: 999px;
+  color: #66552a;
+  background: rgba(255, 251, 243, 0.62);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 16px 40px rgba(168, 132, 66, 0.18);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.hero-open-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(168, 132, 66, 0.7);
+  background: rgba(255, 251, 243, 0.78);
+}
+
 .poster-vignette,
 .poster-fog,
 .poster-grain,
@@ -266,6 +454,43 @@ a {
 .poster-transition {
   z-index: 9;
   background: var(--bg);
+}
+
+.polaroid-section {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 169, 107, 0.12), transparent 20%),
+    linear-gradient(180deg, #f7f1e3, #ece2ce);
+}
+
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.polaroid-card {
+  margin: 0;
+  padding: 0.7rem 0.7rem 1rem;
+  border-radius: 0.35rem;
+  background: #fffdf8;
+  box-shadow: 0 18px 50px rgba(67, 52, 18, 0.16);
+  transform: rotate(var(--rotation));
+}
+
+.polaroid-card img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 0.2rem;
+}
+
+.polaroid-card figcaption {
+  margin-top: 0.8rem;
+  color: rgba(23, 21, 17, 0.72);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  text-align: center;
 }
 
 .icon-button {
@@ -641,6 +866,11 @@ a {
 
   .detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .polaroid-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
   }
 
   .story-shell {

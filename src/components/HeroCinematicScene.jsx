@@ -6,12 +6,33 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { useMemo, useRef, useState } from 'react';
-import heroCoverReference from '../assets/layers/hero-cover-reference.png';
+import { useRef, useState } from 'react';
+import heroCoverLight from '../assets/layers/hero-cover-light.png';
 
-const cinematicEase = [0.22, 1, 0.36, 1];
+function FloatingDust() {
+  return (
+    <>
+      {Array.from({ length: 30 }).map((_, index) => (
+        <span
+          key={index}
+          className="hero-dust"
+          style={{
+            '--x': `${5 + ((index * 27) % 90)}%`,
+            '--y': `${6 + ((index * 39) % 82)}%`,
+            '--delay': `${(index % 10) * 0.5}s`,
+            '--size': `${2 + (index % 3)}px`,
+          }}
+        />
+      ))}
+    </>
+  );
+}
 
-export default function HeroCinematicScene({ config, onOpen }) {
+function LayerImage({ className }) {
+  return <img className={className} src={heroCoverLight} alt="" aria-hidden="true" />;
+}
+
+export default function HeroCinematicScene({ onOpen }) {
   const ref = useRef(null);
   const [opening, setOpening] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -26,36 +47,16 @@ export default function HeroCinematicScene({ config, onOpen }) {
     offset: ['start start', 'end start'],
   });
 
-  const backgroundX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [10, -10]);
-  const backgroundY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [7, -7]);
-  const midX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [18, -18]);
-  const midY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [12, -12]);
-  const frontX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [30, -30]);
-  const frontY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [18, -18]);
-  const frameX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [-6, 6]);
-  const frameY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [-4, 4]);
-
-  const heroScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1.04, 1.13]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.82, 1], [1, 0.82, 0]);
-  const contentY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, -42]);
-  const contentScale = useTransform(scrollYProgress, [0, 1], reduceMotion ? [1, 1] : [1, 0.94]);
-
-  const particles = useMemo(
-    () =>
-      Array.from({ length: 42 }, (_, index) => ({
-        id: index,
-        x: 5 + ((index * 29) % 90),
-        y: 6 + ((index * 47) % 86),
-        size: 2 + (index % 5),
-        delay: (index % 12) * 0.42,
-        duration: 8 + (index % 7),
-      })),
-    [],
-  );
+  const bgX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [5, -5]);
+  const bgY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [4, -4]);
+  const farX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [8, -8]);
+  const architectureY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, 22]);
+  const frontX = useTransform(smoothX, [-1, 1], reduceMotion ? [0, 0] : [18, -18]);
+  const frontY = useTransform(smoothY, [-1, 1], reduceMotion ? [0, 0] : [-10, 10]);
+  const actionY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [0, -12]);
 
   function handlePointerMove(event) {
     if (reduceMotion || !ref.current) return;
-
     const rect = ref.current.getBoundingClientRect();
     pointerX.set(((event.clientX - rect.left) / rect.width - 0.5) * 2);
     pointerY.set(((event.clientY - rect.top) / rect.height - 0.5) * 2);
@@ -68,149 +69,56 @@ export default function HeroCinematicScene({ config, onOpen }) {
 
   function openInvitation() {
     setOpening(true);
-    window.setTimeout(onOpen, reduceMotion ? 0 : 820);
+    window.setTimeout(onOpen, reduceMotion ? 0 : 460);
   }
 
   return (
     <section
-      className="hero-cinematic-v2"
+      className="hero-cinematic"
       ref={ref}
       onPointerMove={handlePointerMove}
       onPointerLeave={resetPointer}
       onTouchEnd={resetPointer}
     >
-      <motion.div className="hero-depth-stage" style={{ opacity: heroOpacity }}>
-        <motion.img
-          className="hero-layer hero-layer-bg"
-          src={heroCoverReference}
-          alt=""
-          draggable="false"
-          aria-hidden="true"
-          style={{ x: backgroundX, y: backgroundY, scale: heroScale }}
-          initial={reduceMotion ? false : { opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
-          animate={reduceMotion ? {} : { opacity: 1, scale: 1.04, filter: 'blur(0px)' }}
-          transition={{ duration: 1.55, ease: cinematicEase }}
-        />
-
-        <div className="hero-layer hero-layer-tonal-wash" aria-hidden="true" />
-        <div className="hero-layer hero-layer-vignette" aria-hidden="true" />
-        <div className="hero-layer hero-layer-fog hero-layer-fog-a" aria-hidden="true" />
-        <div className="hero-layer hero-layer-fog hero-layer-fog-b" aria-hidden="true" />
-
-        <motion.div className="hero-layer hero-layer-portal" style={{ x: midX, y: midY }} aria-hidden="true">
-          <img src={heroCoverReference} alt="" draggable="false" />
-        </motion.div>
-
-        <motion.div className="hero-layer hero-botanical-left" style={{ x: frontX, y: frontY }} aria-hidden="true">
-          <i />
-          <i />
-          <i />
-          <i />
-        </motion.div>
-
-        <motion.div className="hero-layer hero-botanical-right" style={{ x: frontX, y: frontY }} aria-hidden="true">
-          <i />
-          <i />
-          <i />
-          <i />
-        </motion.div>
-
-        <motion.div className="hero-layer hero-botanical-bottom" style={{ x: frontX, y: frontY }} aria-hidden="true">
-          <i />
-          <i />
-          <i />
-          <i />
-          <i />
-        </motion.div>
-
-        <motion.div className="hero-layer hero-gold-frame" style={{ x: frameX, y: frameY }} aria-hidden="true">
-          <span className="hero-frame-corner corner-tl" />
-          <span className="hero-frame-corner corner-tr" />
-          <span className="hero-frame-corner corner-bl" />
-          <span className="hero-frame-corner corner-br" />
-        </motion.div>
-
-        <motion.div className="hero-layer hero-particles" style={{ x: frameX, y: frameY }} aria-hidden="true">
-          {particles.map((particle) => (
-            <span
-              key={particle.id}
-              style={{
-                '--x': `${particle.x}%`,
-                '--y': `${particle.y}%`,
-                '--s': `${particle.size}px`,
-                '--d': `${particle.delay}s`,
-                '--t': `${particle.duration}s`,
-              }}
-            />
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="hero-content-cinematic"
-          style={{ y: contentY, scale: contentScale }}
-          initial={reduceMotion ? false : { opacity: 0, y: 28, filter: 'blur(10px)' }}
-          animate={reduceMotion ? {} : { opacity: 1, y: 0, filter: 'blur(0px)' }}
-          transition={{ delay: 0.45, duration: 1.25, ease: cinematicEase }}
-        >
-          <motion.p
-            className="hero-kicker"
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 0.95, duration: 0.85, ease: cinematicEase }}
-          >
-            Nuestra boda
-          </motion.p>
-
-          <motion.div
-            className="hero-monogram-cinematic"
-            initial={reduceMotion ? false : { opacity: 0, scale: 0.82, rotate: -2 }}
-            animate={reduceMotion ? {} : { opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ delay: 0.72, duration: 1.1, ease: cinematicEase }}
-          >
-            {config.monogram || 'D & Y'}
-          </motion.div>
-
-          <motion.h1
-            className="hero-names-cinematic"
-            initial={reduceMotion ? false : { opacity: 0, y: 22 }}
-            animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 1.05, duration: 1.08, ease: cinematicEase }}
-          >
-            <span>{config.groomName}</span>
-            <em>&</em>
-            <span>{config.brideName}</span>
-          </motion.h1>
-
-          <motion.p
-            className="hero-date-cinematic"
-            initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-            animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-            transition={{ delay: 1.28, duration: 0.9, ease: cinematicEase }}
-          >
-            {config.dateLabel}
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          className="hero-actions-cinematic"
-          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-          animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
-          transition={{ delay: 1.65, duration: 0.75, ease: cinematicEase }}
-        >
-          <button type="button" onClick={openInvitation} aria-label="Abrir invitación de boda">
-            <span>Abrir invitación</span>
-          </button>
-          <div className="hero-scroll-cue" aria-hidden="true">
-            <span />
-          </div>
-        </motion.div>
+      <motion.div className="layer layer-bg" style={{ x: bgX, y: bgY }}>
+        <LayerImage className="hero-layer-image hero-layer-base" />
       </motion.div>
-
+      <div className="layer layer-fog" />
+      <motion.div className="layer layer-far-trees" style={{ x: farX }}>
+        <LayerImage className="hero-layer-image hero-layer-far" />
+      </motion.div>
+      <motion.div className="layer layer-architecture" style={{ y: architectureY }}>
+        <LayerImage className="hero-layer-image hero-layer-architecture" />
+      </motion.div>
+      <motion.div className="layer layer-front-left" style={{ x: frontX, y: frontY }}>
+        <LayerImage className="hero-layer-image hero-layer-front-left" />
+      </motion.div>
+      <motion.div className="layer layer-front-right" style={{ x: frontX, y: frontY }}>
+        <LayerImage className="hero-layer-image hero-layer-front-right" />
+      </motion.div>
+      <motion.div className="layer layer-front-bottom" style={{ y: frontY }}>
+        <LayerImage className="hero-layer-image hero-layer-front-bottom" />
+      </motion.div>
+      <div className="layer layer-frame" />
+      <div className="layer layer-particles">
+        <FloatingDust />
+      </div>
       <motion.div
-        className="hero-opening-curtain"
+        className="hero-content"
+        style={{ y: actionY }}
+        initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+        animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <button className="hero-open-button" type="button" onClick={openInvitation}>
+          {'Abrir invitaci\u00f3n'}
+        </button>
+      </motion.div>
+      <motion.div
+        className="poster-transition"
         aria-hidden="true"
-        animate={{ opacity: opening ? 1 : 0, scale: opening ? 1 : 1.12 }}
-        transition={{ duration: reduceMotion ? 0 : 0.78, ease: cinematicEase }}
+        animate={{ opacity: opening ? 1 : 0 }}
+        transition={{ duration: reduceMotion ? 0 : 0.42, ease: [0.22, 1, 0.36, 1] }}
       />
     </section>
   );

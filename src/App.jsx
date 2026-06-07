@@ -5,6 +5,7 @@ import IntroScene from './components/IntroScene.jsx';
 import MainInvitation from './components/MainInvitation.jsx';
 import MusicToggle from './components/MusicToggle.jsx';
 import OurStory from './components/OurStory.jsx';
+import PolaroidGallery from './components/PolaroidGallery.jsx';
 import RomanticQuote from './components/RomanticQuote.jsx';
 import RSVPForm from './components/RSVPForm.jsx';
 import ClosingScene from './components/ClosingScene.jsx';
@@ -30,6 +31,7 @@ export default function App() {
         />
         <EventDetails config={weddingConfig} />
         <OurStory story={weddingConfig.story} />
+        <PolaroidGallery />
         <RSVPForm config={weddingConfig} />
         <ClosingScene config={weddingConfig} />
       </div>
