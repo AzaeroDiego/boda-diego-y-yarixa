@@ -13,22 +13,22 @@ export default function DigitalTicket({ guest, config }) {
   return (
     <article className="ticket-card">
       <div>
-        <p className="section-eyebrow">Entrada digital</p>
+        <p className="eyebrow">{'Entrada digital'}</p>
         <h3>{guest.name}</h3>
       </div>
       <QRPlaceholder />
       <dl>
         <div>
-          <dt>Código</dt>
+          <dt>{'Codigo'}</dt>
           <dd>{code}</dd>
         </div>
         <div>
-          <dt>Pases</dt>
+          <dt>{'Pases'}</dt>
           <dd>{guest.passes}</dd>
         </div>
         <div>
-          <dt>Estado</dt>
-          <dd>Confirmado</dd>
+          <dt>{'Estado'}</dt>
+          <dd>{'Confirmado'}</dd>
         </div>
       </dl>
     </article>

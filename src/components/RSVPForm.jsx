@@ -34,69 +34,70 @@ export default function RSVPForm({ config }) {
       confirmedAt: new Date().toISOString(),
     };
 
-    // Replace localStorage with a POST request to your backend/API when available.
     window.localStorage.setItem(storageKey, JSON.stringify(payload));
     setConfirmation(payload);
   }
 
   return (
-    <section className="scene-section">
-      <SectionTitle eyebrow="RSVP" title="Confirma tu asistencia">
-        Tu respuesta nos ayuda a preparar cada detalle con cariño.
-      </SectionTitle>
-      <FadeIn className="relative mx-auto max-w-[430px] px-4">
-        <form className="rsvp-card" onSubmit={handleSubmit}>
-          <label>
-            Nombre completo
-            <input name="name" value={form.name} onChange={updateField} />
-          </label>
-          <label>
-            Teléfono
-            <input name="phone" value={form.phone} onChange={updateField} />
-          </label>
-          <label>
-            Asistirás
-            <select
-              name="attendance"
-              value={form.attendance}
-              onChange={updateField}
-            >
-              <option value="si">Sí, asistiré</option>
-              <option value="no">No podré asistir</option>
-            </select>
-          </label>
-          <label>
-            Número de acompañantes
-            <input
-              min="1"
-              name="passes"
-              type="number"
-              value={form.passes}
-              onChange={updateField}
-            />
-          </label>
-          <label>
-            Comentario opcional
-            <textarea
-              name="comment"
-              rows="3"
-              value={form.comment}
-              onChange={updateField}
-            />
-          </label>
-          <button className="luxury-button w-full" type="submit">
-            Confirmar asistencia
-          </button>
-        </form>
-      </FadeIn>
-      {confirmation && (
-        <FadeIn className="relative mx-auto mt-8 max-w-[430px] px-4">
-          <p className="mb-5 text-center font-serif text-2xl italic text-ivory">
-            Gracias por confirmar. Te esperamos con mucho cariño.
-          </p>
-          <DigitalTicket guest={confirmation} config={config} />
+    <section className="section section-ivory">
+      <div className="section-inner">
+        <SectionTitle eyebrow="RSVP" title="Confirma tu asistencia">
+          {'Tu respuesta nos ayuda a preparar cada detalle con carino.'}
+        </SectionTitle>
+        <FadeIn>
+          <form className="rsvp-card" onSubmit={handleSubmit}>
+            <label>
+              {'Nombre completo'}
+              <input name="name" value={form.name} onChange={updateField} />
+            </label>
+            <label>
+              {'Telefono'}
+              <input name="phone" value={form.phone} onChange={updateField} />
+            </label>
+            <label>
+              {'Asistiras'}
+              <select
+                name="attendance"
+                value={form.attendance}
+                onChange={updateField}
+              >
+                <option value="si">{'Si, asistire'}</option>
+                <option value="no">{'No podre asistir'}</option>
+              </select>
+            </label>
+            <label>
+              {'Numero de acompanantes'}
+              <input
+                min="1"
+                name="passes"
+                type="number"
+                value={form.passes}
+                onChange={updateField}
+              />
+            </label>
+            <label>
+              {'Comentario opcional'}
+              <textarea
+                name="comment"
+                rows="3"
+                value={form.comment}
+                onChange={updateField}
+              />
+            </label>
+            <button className="luxury-button w-full" type="submit">
+              {'Confirmar asistencia'}
+            </button>
+          </form>
         </FadeIn>
-      )}
+        {confirmation && (
+          <FadeIn className="mt-8">
+            <p className="mb-5 text-center font-serif text-2xl italic text-ivory">
+              {'Gracias por confirmar. Te esperamos con mucho carino.'}
+            </p>
+            <DigitalTicket guest={confirmation} config={config} />
+          </FadeIn>
+        )}
+      </div>
     </section>
   );
 }

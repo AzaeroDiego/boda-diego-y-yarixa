@@ -57,13 +57,12 @@ export default function MusicToggle() {
       <button
         className="icon-button"
         type="button"
-        aria-label={enabled ? 'Desactivar música' : 'Activar música'}
-        title={enabled ? 'Desactivar música' : 'Activar música'}
+        aria-label={enabled ? 'Desactivar musica' : 'Activar musica'}
+        title={enabled ? 'Desactivar musica' : 'Activar musica'}
         onClick={toggleMusic}
       >
         {enabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
       </button>
-      {/* Replace the synthesized ambient pad with a real licensed audio file here if desired. */}
     </div>
   );
 }

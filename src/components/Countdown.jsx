@@ -1,6 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import FadeIn from './FadeIn.jsx';
 import SectionTitle from './SectionTitle.jsx';
+
+const COUNTDOWN_UNITS = [
+  ['days', 'Dias'],
+  ['hours', 'Horas'],
+  ['minutes', 'Min'],
+  ['seconds', 'Seg'],
+];
 
 function getRemaining(targetDate) {
   const diff = Math.max(new Date(targetDate).getTime() - Date.now(), 0);
@@ -13,15 +20,6 @@ function getRemaining(targetDate) {
 
 export default function Countdown({ weddingDate, dateLabel }) {
   const [remaining, setRemaining] = useState(() => getRemaining(weddingDate));
-  const units = useMemo(
-    () => [
-      ['days', 'Días'],
-      ['hours', 'Horas'],
-      ['minutes', 'Min'],
-      ['seconds', 'Seg'],
-    ],
-    [],
-  );
 
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -31,18 +29,20 @@ export default function Countdown({ weddingDate, dateLabel }) {
   }, [weddingDate]);
 
   return (
-    <section className="scene-section">
-      <SectionTitle eyebrow="La fecha" title={dateLabel}>
-        Cada segundo nos acerca a celebrar con ustedes.
-      </SectionTitle>
-      <FadeIn className="relative mx-auto grid max-w-[420px] grid-cols-4 gap-2 px-4">
-        {units.map(([key, label]) => (
-          <div key={key} className="count-card">
-            <strong>{String(remaining[key]).padStart(2, '0')}</strong>
-            <span>{label}</span>
-          </div>
-        ))}
-      </FadeIn>
+    <section className="section section-dark">
+      <div className="section-inner">
+        <SectionTitle eyebrow="La fecha" title={dateLabel}>
+          {'Cada segundo nos acerca a celebrar con ustedes.'}
+        </SectionTitle>
+        <FadeIn className="countdown-grid">
+          {COUNTDOWN_UNITS.map(([key, label]) => (
+            <div key={key} className="count-card">
+              <strong>{String(remaining[key]).padStart(2, '0')}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </FadeIn>
+      </div>
     </section>
   );
 }

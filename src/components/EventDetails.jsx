@@ -11,13 +11,13 @@ export default function EventDetails({ config }) {
     },
     {
       icon: Gem,
-      title: 'Recepción',
-      text: `Celebración ${config.receptionTime}`,
+      title: 'Recepcion',
+      text: `Celebracion ${config.receptionTime}`,
     },
     {
       icon: Clock,
       title: 'Hora',
-      text: `${config.ceremonyTime} ceremonia / ${config.receptionTime} recepción`,
+      text: `${config.ceremonyTime} ceremonia / ${config.receptionTime} recepcion`,
     },
     {
       icon: MapPin,
@@ -38,33 +38,35 @@ export default function EventDetails({ config }) {
   ];
 
   return (
-    <section className="scene-section">
-      <SectionTitle eyebrow="Detalles" title="La celebracion" />
-      <div className="relative mx-auto grid max-w-[460px] gap-3 px-4">
-        {details.map((item, index) => {
-          const Icon = item.icon;
-          return (
-            <FadeIn key={item.title} delay={index * 0.05}>
-              <article className="detail-card">
-                <Icon className="mt-1 shrink-0 text-champagne" size={19} />
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                  {item.action && (
-                    <a
-                      className="inline-link"
-                      href={config.googleMapsUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Ver ubicación
-                    </a>
-                  )}
-                </div>
-              </article>
-            </FadeIn>
-          );
-        })}
+    <section className="section section-ivory">
+      <div className="section-inner">
+        <SectionTitle eyebrow="Detalles" title="La celebracion" />
+        <div className="detail-grid">
+          {details.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <FadeIn key={item.title} delay={index * 0.05}>
+                <article className="detail-card">
+                  <Icon className="mt-1 shrink-0 text-champagne" size={19} />
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                    {item.action && (
+                      <a
+                        className="inline-link"
+                        href={config.googleMapsUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {'Ver ubicacion'}
+                      </a>
+                    )}
+                  </div>
+                </article>
+              </FadeIn>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
