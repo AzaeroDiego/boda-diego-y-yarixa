@@ -48,16 +48,16 @@ export default function App() {
       <MusicToggle enabled={musicEnabled} ready={musicReady} onToggle={handleToggleMusic} />
       <IntroScene config={weddingConfig} onOpen={openInvitation} />
       <div className="invitation-flow" ref={contentRef}>
-        <RomanticQuote quote={weddingConfig.quote} />
         <MainInvitation config={weddingConfig} />
+        <RomanticQuote quote={weddingConfig.quote} />
+        <OurStory story={weddingConfig.story} />
+        <PolaroidGallery />
         <Countdown
           weddingDate={weddingConfig.weddingDate}
           dateLabel={weddingConfig.dateLabel}
         />
         <EventDetails config={weddingConfig} />
         <CinematicMoment />
-        <OurStory story={weddingConfig.story} />
-        <PolaroidGallery />
         <GiftRegistry config={weddingConfig} />
         <RSVPForm config={weddingConfig} />
         <ClosingScene config={weddingConfig} />

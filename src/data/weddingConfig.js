@@ -2,7 +2,7 @@ export const weddingConfig = {
   groomName: 'Diego',
   brideName: 'Yarixa',
   fullNames: {
-    groom: 'Diego Casas',
+    groom: 'Diego',
     bride: 'Yarixa',
   },
   monogram: 'D & Y',
