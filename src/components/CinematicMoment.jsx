@@ -14,7 +14,7 @@ export default function CinematicMoment() {
                 muted
                 preload="auto"
                 playsInline
-                className="cinematic-video cinematic-video-left"
+                className="cinematic-video"
               >
                 <source src={designerVideo} type="video/mp4" />
               </video>
