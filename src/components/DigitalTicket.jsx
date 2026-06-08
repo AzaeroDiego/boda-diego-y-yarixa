@@ -1,7 +1,8 @@
+import { Download } from 'lucide-react';
 import QRPlaceholder from './QRPlaceholder.jsx';
 
 export default function DigitalTicket({ guest, config }) {
-  if (!guest) return null;
+  if (!guest || guest.attendance !== 'si') return null;
 
   const codeName = guest.name
     .trim()
@@ -9,6 +10,10 @@ export default function DigitalTicket({ guest, config }) {
     .replace(/[^A-Z0-9]+/g, '')
     .slice(0, 6);
   const code = `${config.invitationCodePrefix}-${codeName || 'INV'}-${guest.passes}`;
+
+  function savePass() {
+    window.print();
+  }
 
   return (
     <article className="ticket-card">
@@ -31,6 +36,10 @@ export default function DigitalTicket({ guest, config }) {
           <dd>{'Confirmado'}</dd>
         </div>
       </dl>
+      <button className="inline-link-button ticket-save-button" type="button" onClick={savePass}>
+        <Download size={15} />
+        {'Guardar pase'}
+      </button>
     </article>
   );
 }

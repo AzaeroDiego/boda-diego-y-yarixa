@@ -1,4 +1,4 @@
-import { Clock, Gem, MapPin, Shirt, Sparkles } from 'lucide-react';
+import { Clock3, Gem, MapPin, Shirt, Sparkles } from 'lucide-react';
 import FadeIn from './FadeIn.jsx';
 import SectionTitle from './SectionTitle.jsx';
 
@@ -7,28 +7,30 @@ export default function EventDetails({ config }) {
     {
       icon: Sparkles,
       title: 'Ceremonia',
-      text: `Inicio ${config.ceremonyTime}`,
+      text: `${config.ceremony.name} · ${config.ceremony.time}`,
+      url: config.ceremony.mapsUrl,
     },
     {
       icon: Gem,
       title: 'Recepcion',
-      text: `Celebracion ${config.receptionTime}`,
+      text: `${config.reception.name} · ${config.reception.time}`,
+      url: config.reception.mapsUrl,
     },
     {
-      icon: Clock,
-      title: 'Hora',
-      text: `${config.ceremonyTime} ceremonia / ${config.receptionTime} recepcion`,
-    },
-    {
-      icon: MapPin,
-      title: 'Lugar',
-      text: `${config.venueName}. ${config.address}`,
-      action: true,
+      icon: Clock3,
+      title: 'Horario',
+      text: `${config.ceremony.time} ceremonia / ${config.reception.time} recepcion`,
     },
     {
       icon: Shirt,
       title: 'Dress code',
       text: config.dressCode,
+    },
+    {
+      icon: MapPin,
+      title: 'Ubicaciones',
+      text: 'Accede a la ruta de cada momento desde tu celular.',
+      dualLinks: true,
     },
     {
       icon: Sparkles,
@@ -51,15 +53,30 @@ export default function EventDetails({ config }) {
                   <div>
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
-                    {item.action && (
-                      <a
-                        className="inline-link"
-                        href={config.googleMapsUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
+                    {item.url && (
+                      <a className="inline-link" href={item.url} target="_blank" rel="noreferrer">
                         {'Ver ubicacion'}
                       </a>
+                    )}
+                    {item.dualLinks && (
+                      <div className="detail-link-stack">
+                        <a
+                          className="inline-link"
+                          href={config.ceremony.mapsUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {'Iglesia'}
+                        </a>
+                        <a
+                          className="inline-link"
+                          href={config.reception.mapsUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {'Recepcion'}
+                        </a>
+                      </div>
                     )}
                   </div>
                 </article>

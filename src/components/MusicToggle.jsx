@@ -1,67 +1,19 @@
-import { Volume2, VolumeX } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { Pause, Play, Volume2 } from 'lucide-react';
 
-export default function MusicToggle() {
-  const [enabled, setEnabled] = useState(false);
-  const audioRef = useRef({ context: null, oscillators: [], gain: null });
-
-  useEffect(() => {
-    return () => {
-      const audio = audioRef.current;
-      audio.oscillators.forEach((oscillator) => oscillator.stop());
-      audio.context?.close();
-    };
-  }, []);
-
-  function toggleMusic() {
-    if (enabled) {
-      audioRef.current.gain?.gain.setTargetAtTime(
-        0,
-        audioRef.current.context.currentTime,
-        0.8,
-      );
-      setEnabled(false);
-      return;
-    }
-
-    if (!audioRef.current.context) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      const context = new AudioContext();
-      const gain = context.createGain();
-      gain.gain.value = 0;
-      gain.connect(context.destination);
-
-      const oscillators = [196, 246.94, 329.63].map((frequency) => {
-        const oscillator = context.createOscillator();
-        oscillator.type = 'sine';
-        oscillator.frequency.value = frequency;
-        oscillator.connect(gain);
-        oscillator.start();
-        return oscillator;
-      });
-
-      audioRef.current = { context, gain, oscillators };
-    }
-
-    audioRef.current.context.resume();
-    audioRef.current.gain.gain.setTargetAtTime(
-      0.025,
-      audioRef.current.context.currentTime,
-      0.9,
-    );
-    setEnabled(true);
-  }
+export default function MusicToggle({ enabled, ready, onToggle }) {
+  const label = enabled ? 'Pausar musica' : ready ? 'Reproducir musica' : 'Cargando musica';
 
   return (
-    <div className="fixed right-4 top-4 z-50">
+    <div className="fixed right-4 top-4 z-50 flex items-center gap-2">
+      <span className="music-chip">{ready ? 'audio' : 'loading'}</span>
       <button
         className="icon-button"
         type="button"
-        aria-label={enabled ? 'Desactivar musica' : 'Activar musica'}
-        title={enabled ? 'Desactivar musica' : 'Activar musica'}
-        onClick={toggleMusic}
+        aria-label={label}
+        title={label}
+        onClick={onToggle}
       >
-        {enabled ? <Volume2 size={18} /> : <VolumeX size={18} />}
+        {enabled ? <Pause size={18} /> : ready ? <Volume2 size={18} /> : <Play size={18} />}
       </button>
     </div>
   );
