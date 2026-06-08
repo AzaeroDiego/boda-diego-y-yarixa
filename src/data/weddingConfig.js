@@ -33,7 +33,7 @@ export const weddingConfig = {
   closingText: 'Gracias por ser parte de este d\u00eda tan especial.',
   invitationCodePrefix: 'DY',
   defaultPasses: 2,
-  maxPasses: 2,
+  maxPasses: 4,
   whatsappCountryCode: '51',
   whatsappContacts: [
     { label: 'Diego', number: '917059626' },

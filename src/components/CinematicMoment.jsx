@@ -9,8 +9,10 @@ export default function CinematicMoment() {
           <div className="cinematic-card">
             <video
               autoPlay
+              controls
               loop
               muted
+              preload="metadata"
               playsInline
               className="cinematic-video"
               poster=""
@@ -21,6 +23,9 @@ export default function CinematicMoment() {
             <div className="cinematic-copy">
               <p className="eyebrow">{'Momentos Especiales'}</p>
               <h2>{'Un video para recordarlos'}</h2>
+              <a className="cinematic-link" href={videoLoopWeb} target="_blank" rel="noreferrer">
+                {'Abrir video'}
+              </a>
             </div>
           </div>
         </FadeIn>

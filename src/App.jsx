@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import Countdown from './components/Countdown.jsx';
 import EventDetails from './components/EventDetails.jsx';
 import GiftRegistry from './components/GiftRegistry.jsx';
@@ -13,12 +13,17 @@ import ClosingScene from './components/ClosingScene.jsx';
 import CinematicMoment from './components/CinematicMoment.jsx';
 import YouTubeAudioPlayer from './components/YouTubeAudioPlayer.jsx';
 import { weddingConfig } from './data/weddingConfig.js';
+import { getGuestInvitation } from './data/guestList.js';
 
 export default function App() {
   const contentRef = useRef(null);
   const playerRef = useRef(null);
   const [musicReady, setMusicReady] = useState(false);
   const [musicEnabled, setMusicEnabled] = useState(false);
+  const guestInvitation = useMemo(
+    () => getGuestInvitation(window.location.search),
+    [],
+  );
 
   const handleToggleMusic = useCallback(() => {
     if (musicEnabled) {
@@ -59,7 +64,7 @@ export default function App() {
         <EventDetails config={weddingConfig} />
         <CinematicMoment />
         <GiftRegistry config={weddingConfig} />
-        <RSVPForm config={weddingConfig} />
+        <RSVPForm config={weddingConfig} guestInvitation={guestInvitation} />
         <ClosingScene config={weddingConfig} />
       </div>
     </main>

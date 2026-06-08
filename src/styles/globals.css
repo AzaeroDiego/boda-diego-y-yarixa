@@ -908,6 +908,17 @@ a {
   line-height: 1;
 }
 
+.cinematic-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--ivory);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
 .story-figure {
   position: relative;
   overflow: hidden;
@@ -959,6 +970,24 @@ a {
 .rsvp-minimal {
   gap: 1.5rem;
   padding: 2rem 1.4rem;
+}
+
+.invitation-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(23, 21, 17, 0.14);
+  border-radius: 999px;
+  color: rgba(23, 21, 17, 0.76);
+  background: rgba(255, 255, 255, 0.44);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .rsvp-card label {
@@ -1141,6 +1170,11 @@ a {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   line-height: 1.1;
+}
+
+.reserved-copy-warning {
+  max-width: 18rem;
+  font-size: 1.55rem;
 }
 
 .rsvp-closing {
