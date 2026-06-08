@@ -41,11 +41,13 @@ function ReservedSeats({ passes, maxPasses }) {
 export default function RSVPForm({ config, guestInvitation }) {
   const invitation = guestInvitation || {
     code: 'SIN-CODIGO',
+    name: '',
     label: 'Invitacion personalizada',
     passes: 0,
   };
 
   const activePasses = Math.min(invitation.passes, config.maxPasses);
+  const guestName = invitation.name?.trim();
 
   function handleWhatsapp(contact) {
     const phone = `${config.whatsappCountryCode}${contact.number}`;
@@ -53,9 +55,12 @@ export default function RSVPForm({ config, guestInvitation }) {
       activePasses > 0
         ? [
             `Hola ${contact.label}, confirmo mi asistencia a la boda de ${config.fullNames.groom} & ${config.fullNames.bride}.`,
+            guestName ? `Invitacion para: ${guestName}.` : null,
             `Codigo de invitacion: ${invitation.code}.`,
             `Esta invitacion corresponde a ${activePasses} pase(s).`,
-          ].join('\n')
+          ]
+            .filter(Boolean)
+            .join('\n')
         : [
             `Hola ${contact.label}, necesito mi enlace personalizado para confirmar asistencia.`,
             `La web fue abierta sin un codigo de invitacion valido.`,
@@ -79,6 +84,12 @@ export default function RSVPForm({ config, guestInvitation }) {
               <Ticket size={16} />
               <span>{`${invitation.label} · ${invitation.code}`}</span>
             </div>
+            {guestName && (
+              <div className="guest-invitation-name">
+                <p>{'Invitacion para'}</p>
+                <strong>{guestName}</strong>
+              </div>
+            )}
             <div className="whatsapp-actions whatsapp-actions-double">
               {config.whatsappContacts.map((contact) => (
                 <button
