@@ -7,7 +7,7 @@ export const guestList = {
   'DY-001': {
     code: 'DY-001',
     name: 'Carlos Ramírez',
-    label: 'Invitado especial',
+    label: 'Angel de la Reguera',
     passes: 1,
   },
 
