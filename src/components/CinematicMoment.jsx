@@ -19,8 +19,8 @@ export default function CinematicMoment() {
             </video>
             <div className="cinematic-overlay" />
             <div className="cinematic-copy">
-              <p className="eyebrow">{'Video del dise\u00f1ador'}</p>
-              <h2>{'Una escena para volver a sentir este momento'}</h2>
+              <p className="eyebrow">{'Momentos Especiales'}</p>
+              <h2>{'Un video para recordarlos'}</h2>
             </div>
           </div>
         </FadeIn>

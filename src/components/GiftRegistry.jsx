@@ -5,6 +5,7 @@ import SectionTitle from './SectionTitle.jsx';
 
 export default function GiftRegistry({ config }) {
   const [copied, setCopied] = useState(false);
+  const [copiedWallet, setCopiedWallet] = useState('');
 
   async function handleCopy() {
     try {
@@ -13,6 +14,16 @@ export default function GiftRegistry({ config }) {
       window.setTimeout(() => setCopied(false), 1800);
     } catch {
       setCopied(false);
+    }
+  }
+
+  async function handleCopyWallet(number) {
+    try {
+      await navigator.clipboard.writeText(number);
+      setCopiedWallet(number);
+      window.setTimeout(() => setCopiedWallet(''), 1800);
+    } catch {
+      setCopiedWallet('');
     }
   }
 
@@ -33,6 +44,20 @@ export default function GiftRegistry({ config }) {
               <Copy size={15} />
               {copied ? 'Copiado' : 'Copiar cuenta'}
             </button>
+            <div className="wallet-grid">
+              {config.gifts.walletContacts.map((wallet) => (
+                <button
+                  key={wallet.number}
+                  className="wallet-card"
+                  type="button"
+                  onClick={() => handleCopyWallet(wallet.number)}
+                >
+                  <span>{wallet.label}</span>
+                  <strong>{wallet.number}</strong>
+                  <small>{copiedWallet === wallet.number ? 'Copiado' : 'Copiar numero'}</small>
+                </button>
+              ))}
+            </div>
           </article>
         </FadeIn>
       </div>

@@ -40,8 +40,12 @@ export const weddingConfig = {
     { label: 'Yarixa', number: '984180470' },
   ],
   gifts: {
-    label: 'N\u00famero de cuenta',
-    accountNumber: 'XXXXXXXXXXXXXXXXXXXXXXX',
+    label: 'Cuenta CCI',
+    accountNumber: '094-00131000006454-8-56',
+    walletContacts: [
+      { label: 'Yape/Plin Diego Casas', number: '917059626' },
+      { label: 'Yape/Plin Yarixa Escobedo', number: '984180470' },
+    ],
   },
   music: {
     youtubeId: 'MicfrcBdXQo',

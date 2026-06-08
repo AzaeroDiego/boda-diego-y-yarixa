@@ -1,4 +1,12 @@
-import { Clock3, Gem, MapPin, Shirt, Sparkles } from 'lucide-react';
+import {
+  Building2,
+  Church,
+  Clock3,
+  Gem,
+  MapPin,
+  Shirt,
+  Sparkles,
+} from 'lucide-react';
 import FadeIn from './FadeIn.jsx';
 import SectionTitle from './SectionTitle.jsx';
 
@@ -7,13 +15,13 @@ export default function EventDetails({ config }) {
     {
       icon: Sparkles,
       title: 'Ceremonia',
-      text: `${config.ceremony.name} · ${config.ceremony.time}`,
+      text: `${config.ceremony.name} \u00b7 ${config.ceremony.time}`,
       url: config.ceremony.mapsUrl,
     },
     {
       icon: Gem,
       title: 'Recepcion',
-      text: `${config.reception.name} · ${config.reception.time}`,
+      text: `${config.reception.name} \u00b7 ${config.reception.time}`,
       url: config.reception.mapsUrl,
     },
     {
@@ -61,19 +69,21 @@ export default function EventDetails({ config }) {
                     {item.dualLinks && (
                       <div className="detail-link-stack">
                         <a
-                          className="inline-link"
+                          className="inline-link with-icon"
                           href={config.ceremony.mapsUrl}
                           target="_blank"
                           rel="noreferrer"
                         >
+                          <Church size={15} />
                           {'Iglesia'}
                         </a>
                         <a
-                          className="inline-link"
+                          className="inline-link with-icon"
                           href={config.reception.mapsUrl}
                           target="_blank"
                           rel="noreferrer"
                         >
+                          <Building2 size={15} />
                           {'Recepcion'}
                         </a>
                       </div>
