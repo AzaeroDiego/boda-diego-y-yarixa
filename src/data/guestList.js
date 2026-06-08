@@ -1,28 +1,34 @@
-// Invitaciones personalizadas por codigo.
+// Invitaciones personalizadas por código.
 // Comparte enlaces como:
 // ?inv=DY-001
 // ?inv=DY-002
-// ?inv=DY-003
-// ?inv=DY-004
+
 export const guestList = {
   'DY-001': {
     code: 'DY-001',
+    name: 'Carlos Ramírez',
     label: 'Invitado especial',
     passes: 1,
   },
+
   'DY-002': {
     code: 'DY-002',
-    label: 'Invitado especial',
+    name: 'Familia Pérez Guevara',
+    label: 'Invitación familiar',
     passes: 2,
   },
+
   'DY-003': {
     code: 'DY-003',
-    label: 'Invitado especial',
+    name: 'Luis y Andrea',
+    label: 'Invitación doble',
     passes: 3,
   },
+
   'DY-004': {
     code: 'DY-004',
-    label: 'Invitado especial',
+    name: 'Familia Casas',
+    label: 'Familia del novio',
     passes: 4,
   },
 };
