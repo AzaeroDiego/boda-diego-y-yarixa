@@ -47,7 +47,7 @@ export default function RSVPForm({ config, guestInvitation }) {
   };
 
   const activePasses = Math.min(invitation.passes, config.maxPasses);
-  const guestName = invitation.name?.trim();
+  const visibleGuestName = (invitation.label || invitation.name || '').trim();
 
   function handleWhatsapp(contact) {
     const phone = `${config.whatsappCountryCode}${contact.number}`;
@@ -55,7 +55,7 @@ export default function RSVPForm({ config, guestInvitation }) {
       activePasses > 0
         ? [
             `Hola ${contact.label}, confirmo mi asistencia a la boda de ${config.fullNames.groom} & ${config.fullNames.bride}.`,
-            guestName ? `Invitacion para: ${guestName}.` : null,
+            visibleGuestName ? `Invitacion para: ${visibleGuestName}.` : null,
             `Codigo de invitacion: ${invitation.code}.`,
             `Esta invitacion corresponde a ${activePasses} pase(s).`,
           ]
@@ -82,12 +82,12 @@ export default function RSVPForm({ config, guestInvitation }) {
           <div className="rsvp-card rsvp-minimal">
             <div className="invitation-badge">
               <Ticket size={16} />
-              <span>{`${invitation.label} · ${invitation.code}`}</span>
+              <span>{invitation.code}</span>
             </div>
-            {guestName && (
+            {visibleGuestName && (
               <div className="guest-invitation-name">
                 <p>{'Invitacion para'}</p>
-                <strong>{guestName}</strong>
+                <strong>{visibleGuestName}</strong>
               </div>
             )}
             <div className="whatsapp-actions whatsapp-actions-double">
