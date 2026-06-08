@@ -14,7 +14,7 @@ export const guestList = {
   'DY-002': {
     code: 'DY-002',
     name: 'Familia Pérez Guevara',
-    label: 'Invitación familiar',
+    label: 'Diego Briones y Esposa',
     passes: 2,
   },
 
