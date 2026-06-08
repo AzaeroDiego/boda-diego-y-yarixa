@@ -26,13 +26,14 @@ export const weddingConfig = {
   },
   dressCode: 'Formal elegante',
   recommendations:
-    'Te sugerimos llegar con anticipaci\u00f3n y reservar esta noche para celebrar con nosotros sin prisa.',
+    'No ni\u00f1os. Te sugerimos llegar con anticipaci\u00f3n y reservar esta noche para celebrar con nosotros sin prisa.',
   quote: 'Hay momentos que se sue\u00f1an toda la vida. Este es el nuestro.',
   story:
     'Lo que empez\u00f3 con una conversaci\u00f3n tranquila hoy se ha convertido en la decisi\u00f3n m\u00e1s importante de nuestras vidas. Queremos celebrar este comienzo rodeados de quienes han sido parte de nuestro camino.',
   closingText: 'Gracias por ser parte de este d\u00eda tan especial.',
   invitationCodePrefix: 'DY',
   defaultPasses: 2,
+  maxPasses: 2,
   whatsappCountryCode: '51',
   whatsappContacts: [
     { label: 'Diego', number: '917059626' },

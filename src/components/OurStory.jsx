@@ -6,7 +6,7 @@ export default function OurStory({ story }) {
   return (
     <section className="section section-dark">
       <div className="section-inner">
-        <SectionTitle eyebrow="Nuestra historia" title="Como una carta" />
+        <SectionTitle eyebrow="Capitulo I" title="Nuestra Historia" />
         <FadeIn className="story-shell">
           <figure className="story-figure">
             <img src={storyPhoto} alt="Diego y Yarixa" />

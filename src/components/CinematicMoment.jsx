@@ -1,5 +1,5 @@
 import FadeIn from './FadeIn.jsx';
-import videoLoop from '../assets/video/engagement-loop.mp4';
+import videoLoopWeb from '../assets/video/video-y-d-web.mp4';
 
 export default function CinematicMoment() {
   return (
@@ -15,12 +15,12 @@ export default function CinematicMoment() {
               className="cinematic-video"
               poster=""
             >
-              <source src={videoLoop} type="video/mp4" />
+              <source src={videoLoopWeb} type="video/mp4" />
             </video>
             <div className="cinematic-overlay" />
             <div className="cinematic-copy">
-              <p className="eyebrow">{'Un instante'}</p>
-              <h2>{'Una pausa para mirarnos antes del gran dia'}</h2>
+              <p className="eyebrow">{'Video del dise\u00f1ador'}</p>
+              <h2>{'Una escena para volver a sentir este momento'}</h2>
             </div>
           </div>
         </FadeIn>

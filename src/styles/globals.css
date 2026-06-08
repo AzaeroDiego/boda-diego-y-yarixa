@@ -920,6 +920,11 @@ a {
   gap: 1.2rem;
 }
 
+.rsvp-minimal {
+  gap: 1.5rem;
+  padding: 2rem 1.4rem;
+}
+
 .rsvp-card label {
   display: grid;
   gap: 0.42rem;
@@ -1008,12 +1013,107 @@ a {
   gap: 0.8rem;
 }
 
+.whatsapp-actions-double {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .whatsapp-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
   width: 100%;
+}
+
+.whatsapp-outline-button {
+  display: inline-flex;
+  min-height: 4rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  border: 1px solid rgba(23, 21, 17, 0.24);
+  border-radius: 0.7rem;
+  color: #171511;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 16px 34px rgba(97, 73, 27, 0.09);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.whatsapp-outline-button span {
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 1rem;
+}
+
+.whatsapp-outline-button:hover {
+  transform: translateY(-2px);
+  border-color: rgba(23, 21, 17, 0.42);
+  box-shadow: 0 20px 42px rgba(97, 73, 27, 0.14);
+}
+
+.reserved-panel {
+  padding: 3rem 1.4rem;
+  border-radius: 1.25rem;
+  background: rgba(23, 21, 17, 0.08);
+}
+
+.reserved-seats {
+  text-align: center;
+}
+
+.reserved-title {
+  margin: 0;
+  color: #171511;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  line-height: 1;
+}
+
+.reserved-dots {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.reserved-dot {
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 2px solid #171511;
+  border-radius: 999px;
+  background: rgba(255, 251, 242, 0.8);
+}
+
+.reserved-dot.is-filled {
+  background: #171511;
+}
+
+.reserved-counts {
+  display: flex;
+  justify-content: center;
+  gap: 2.2rem;
+  margin-top: 1rem;
+  color: #171511;
+  font-family: 'Libre Caslon Text', serif;
+  font-size: 2rem;
+}
+
+.reserved-copy {
+  margin: 1.4rem auto 0;
+  max-width: 14rem;
+  color: rgba(23, 21, 17, 0.84);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+.rsvp-closing {
+  margin: 2rem 0 0;
+  text-align: center;
+  color: #171511;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-style: italic;
 }
 
 .ticket-card {

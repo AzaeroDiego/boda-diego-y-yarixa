@@ -31,7 +31,7 @@ export default function PolaroidGallery() {
   return (
     <section className="section section-ivory editorial-gallery" ref={ref}>
       <div className="section-inner">
-        <SectionTitle eyebrow="Galeria" title="Nuestros recuerdos">
+        <SectionTitle eyebrow="Capitulo II" title="Nuestros Recuerdos">
           {'Una composicion de fotografias para recorrer este comienzo con calma.'}
         </SectionTitle>
         <motion.div className="gallery-word gallery-word-top" style={{ y: wordY }}>
