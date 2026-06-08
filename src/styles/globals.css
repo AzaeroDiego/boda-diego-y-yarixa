@@ -6,9 +6,9 @@
 
 :root {
   color-scheme: dark;
-  --bg: #0b0f0b;
-  --surface: #111610;
-  --surface-soft: #171d16;
+  --bg: #2f3a2e;
+  --surface: #334032;
+  --surface-soft: #3c4939;
   --olive: #2f3a2e;
   --olive-soft: #5e6647;
   --ivory: #f8f5ee;
@@ -39,7 +39,7 @@ body {
   overflow-x: hidden;
   background:
     radial-gradient(circle at 50% 0%, rgba(200, 169, 107, 0.08), transparent 30%),
-    linear-gradient(180deg, #0b0f0b, #10150f 32%, #0b0f0b 100%);
+    linear-gradient(180deg, #2f3a2e, #384536 32%, #2f3a2e 100%);
   color: var(--ivory);
 }
 
@@ -88,7 +88,7 @@ a {
 .section-dark {
   background:
     radial-gradient(circle at 50% 14%, rgba(248, 245, 238, 0.06), transparent 24%),
-    linear-gradient(180deg, #0d120d, #151b14 48%, #0d120d);
+    linear-gradient(180deg, #31402f, #3a4838 48%, #31402f);
 }
 
 .section-ivory {
@@ -428,8 +428,8 @@ a {
   border-radius: 999px;
   color: var(--ivory);
   background:
-    linear-gradient(180deg, rgba(200, 169, 107, 0.16), rgba(11, 15, 11, 0.76)),
-    rgba(11, 15, 11, 0.56);
+    linear-gradient(180deg, rgba(200, 169, 107, 0.16), rgba(47, 58, 46, 0.82)),
+    rgba(47, 58, 46, 0.66);
   box-shadow: 0 20px 54px rgba(0, 0, 0, 0.42);
   backdrop-filter: blur(14px);
   font-size: 0.7rem;
@@ -447,7 +447,7 @@ a {
   transform: translateY(-2px);
   border-color: rgba(248, 245, 238, 0.84);
   background:
-    linear-gradient(180deg, rgba(200, 169, 107, 0.26), rgba(11, 15, 11, 0.82)),
+    linear-gradient(180deg, rgba(200, 169, 107, 0.26), rgba(47, 58, 46, 0.88)),
     rgba(47, 58, 46, 0.7);
 }
 
@@ -477,7 +477,7 @@ a {
   border: 1px solid rgba(200, 169, 107, 0.34);
   border-radius: 999px;
   color: rgba(248, 245, 238, 0.82);
-  background: rgba(11, 15, 11, 0.48);
+  background: rgba(47, 58, 46, 0.58);
   backdrop-filter: blur(12px);
   font-size: 0.58rem;
   font-weight: 700;
@@ -524,7 +524,7 @@ a {
   border: 1px solid rgba(200, 169, 107, 0.5);
   border-radius: 999px;
   color: var(--ivory);
-  background: rgba(11, 15, 11, 0.56);
+  background: rgba(47, 58, 46, 0.66);
   box-shadow: 0 20px 42px rgba(0, 0, 0, 0.34);
   backdrop-filter: blur(12px);
   transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
@@ -835,7 +835,7 @@ a {
   border-radius: 1.5rem;
   border: 1px solid rgba(200, 169, 107, 0.24);
   box-shadow: var(--shadow);
-  background: #0f140f;
+  background: #31402f;
 }
 
 .cinematic-video {
@@ -850,8 +850,8 @@ a {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(11, 15, 11, 0.14), rgba(11, 15, 11, 0.58) 72%, rgba(11, 15, 11, 0.86)),
-    radial-gradient(circle at 50% 32%, transparent 0 30%, rgba(11, 15, 11, 0.28) 100%);
+    linear-gradient(180deg, rgba(47, 58, 46, 0.1), rgba(47, 58, 46, 0.48) 72%, rgba(47, 58, 46, 0.74)),
+    radial-gradient(circle at 50% 32%, transparent 0 30%, rgba(47, 58, 46, 0.24) 100%);
 }
 
 .cinematic-copy {
@@ -891,13 +891,13 @@ a {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(11, 15, 11, 0.3));
+  background: linear-gradient(180deg, rgba(47, 58, 46, 0.03), rgba(47, 58, 46, 0.24));
 }
 
 .letter-panel {
   padding: 2rem 1.4rem;
   border-radius: 1.3rem;
-  background: rgba(13, 18, 13, 0.7);
+  background: rgba(49, 64, 47, 0.7);
   backdrop-filter: blur(16px);
 }
 
@@ -1171,8 +1171,8 @@ a {
   border: 1px solid rgba(200, 169, 107, 0.22);
   border-radius: 1.5rem;
   background:
-    linear-gradient(180deg, rgba(26, 34, 25, 0.9), rgba(11, 15, 11, 0.9)),
-    rgba(11, 15, 11, 0.8);
+    linear-gradient(180deg, rgba(58, 73, 57, 0.92), rgba(47, 58, 46, 0.92)),
+    rgba(47, 58, 46, 0.82);
   box-shadow: var(--shadow);
   text-align: center;
 }
@@ -1219,11 +1219,11 @@ a {
 }
 
 .qr-placeholder span {
-  background: rgba(11, 15, 11, 0.14);
+  background: rgba(47, 58, 46, 0.14);
 }
 
 .qr-placeholder span.on {
-  background: #0b0f0b;
+  background: #2f3a2e;
 }
 
 .closing-scene {
@@ -1231,8 +1231,8 @@ a {
   min-height: 70vh;
   overflow: hidden;
   background:
-    linear-gradient(180deg, rgba(11, 15, 11, 0.68), rgba(11, 15, 11, 0.9)),
-    linear-gradient(180deg, #151b14, #0b0f0b);
+    linear-gradient(180deg, rgba(47, 58, 46, 0.66), rgba(47, 58, 46, 0.88)),
+    linear-gradient(180deg, #3a4838, #2f3a2e);
 }
 
 .closing-scene::before {
@@ -1290,7 +1290,7 @@ a {
   body {
     background:
       radial-gradient(circle at 50% 20%, rgba(94, 102, 71, 0.22), transparent 34%),
-      #060806;
+      #2f3a2e;
   }
 
   .wedding-poster-hero {
